@@ -1,0 +1,20 @@
+{
+  "name": "hello-node",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.7",
+    "gulp-atom-downloader": "^0.2.1",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-livereload": "^3.8.1"
+  },
+  "dependencies": {
+    "express": "~4.13.3"
+  }
+}
