@@ -12,7 +12,17 @@
     "gulp-util": "^3.0.7",
     "gulp-atom-downloader": "^0.2.1",
     "gulp-nodemon": "^2.0.6",
-    "gulp-livereload": "^3.8.1"
+    "gulp-livereload": "^3.8.1",
+    "body-parser": "*",
+    "method-override": "*",
+    "safe-buffer": "*",    
+    "consolidate": "*",
+    "dust": "*",
+    "request": "*",
+    "dustjs-helpers": "*",
+    "dustjs-linkedin": "*",
+    "express": "*",
+    "axios": "*"
   },
   "dependencies": {
     "express": "~4.13.3"
