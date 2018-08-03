@@ -1,5 +1,4 @@
-var cons = require('consolidate'),
-	dust = require('dustjs-helpers'),
+var dust = require('dustjs-helpers'),
 	request = require('request'),
 	path = require('path'),
 	express = require('express');
