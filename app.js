@@ -6,10 +6,17 @@ var path = require('path'),
 	axios=require('axios'),
 	express = require('express');
 
-var app = express();
+var app.engine('dust', cons.dust),
+	app.set('view engine', 'dust'),
+	app.set('views', __dirname + '/views'),
+	app.use(express.static(path.join(__dirname,'public'))),
+	app = express();
+
+
+
 
 app.get('/', function(req, res) {
-  res.send('hello, Edixon');
+	res.render('index');
 });
 
 app.listen(process.env.PORT || 5000);
