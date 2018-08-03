@@ -1,18 +1,13 @@
-// Cargar el modulo HTTP
-var http = require('http');
- 
-// Configurar una respuesta HTTP para todas las peticiones
-function onRequest(request, response) {
-  console.log("Peticion Recibida.");
-  response.writeHead(200, {"Content-Type": "text/html"});
-  response.write("Hola Mundo");
-  response.end();
+var express = require('express');
+
+var app = express();
+
+app.get('/', function(req, res) {
+  res.send('hello, Edixon');
+});
+
+app.listen(process.env.PORT || 5000);
+
+if (process.env.PORT === undefined) {
+  console.log('Running at: http://localhost:5000');
 }
- 
-var server = http.createServer(onRequest);
- 
-// Escuchar al puerto 8080
-server.listen(8080);
- 
-// Poner un mensaje en la consola
-console.log("Servidor funcionando en http://localhost:8080/");
