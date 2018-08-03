@@ -1,5 +1,4 @@
-var bodyParser = require('body-parser'),
-	cons = require('consolidate'),
+var cons = require('consolidate'),
 	dust = require('dustjs-helpers'),
 	request = require('request'),
 	path = require('path'),
