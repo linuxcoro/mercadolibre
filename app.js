@@ -1,7 +1,4 @@
-var dust = require('dustjs-helpers'),
-	request = require('request'),
-	path = require('path'),
-	express = require('express');
+var express = require('express');
 
 var app = express();
 
