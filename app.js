@@ -2,7 +2,6 @@ var bodyParser = require('body-parser'),
 	cons = require('consolidate'),
 	dust = require('dustjs-helpers'),
 	request = require('request'),
-	axios=require('axios'),
 	path = require('path'),
 	express = require('express');
 
