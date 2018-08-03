@@ -1,5 +1,5 @@
 {>"layout" /}
 {<body}
 	esto se mostrara ...<br>
-	desde mi lapto
+	{json}
 {/body}

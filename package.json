@@ -27,6 +27,6 @@
     "axios": "*",
     "node-google-translate-skidz": "*",
     "pg": "*",
-    "amazon-list-scraper":"*"
+    "cheerio": "*"
   }
 }

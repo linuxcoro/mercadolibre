@@ -6,6 +6,8 @@ var path = require('path'),
 	axios=require('axios'),
 	express = require('express');
 
+var cheerio = require('cheerio');
+
 var app = express();
 
 	app.engine('dust', cons.dust);
@@ -15,31 +17,45 @@ var app = express();
 
 
 
+
+
+
+
+
+
+
+
 app.get('/', function(req, res) {
-	res.render('index');
+    url = 'http://www.imdb.com/title/tt1229340/';
+
+
+    request(url, function(error, response, html){
+        if(!error){
+            var $ = cheerio.load(html);
+            var title, release, rating;
+            var json = { title : "", release : "", rating : ""};
+           	res.render('index', {'json': json });
+        }
+    })
+
+
 });
 
-const AmazonListScraper = require('amazon-list-scraper').default;
- 
-const scraper = new AmazonListScraper();
-scraper.scrape('https://www.amazon.com/gp/registry/wishlist/1JMCNHNT959X2')
-  .then(items => {
-    console.log(items);
-    //  [
-    //    { 
-    //      title: 'The Principles of Object-Oriented JavaScript',
-    //      price: 9.99,
-    //      link: 'https://www.amazon.com/dp/B00I87B1H8/ref=wl_it_dp_v_nS_ttl/184-4221310-4664445?_encoding=UTF8&colid=1JMCNHNT959X2&coliid=I2ETH645CXBEGM'
-    //    },
-    //    { 
-    //      title: 'Clean Code: A Handbook of Agile Software Craftsmanship',
-    //      price: 38.6,
-    //      link: 'https://www.amazon.com/dp/0132350882/ref=wl_it_dp_v_nS_ttl/184-4221310-4664445?_encoding=UTF8&colid=1JMCNHNT959X2&coliid=IDGP10KBLGRPV'
-    //    } 
-    //  ]
-  })
-  .catch(error => {
-  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
