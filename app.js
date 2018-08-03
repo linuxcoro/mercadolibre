@@ -16,15 +16,6 @@ var app = express();
 
 
 
-
-
-
-
-
-
-
-
-
 app.get('/', function(req, res) {
     url = 'http://www.imdb.com/title/tt1229340/';
 
@@ -35,28 +26,12 @@ app.get('/', function(req, res) {
             var title, release, rating;
             var json = { title : "", release : "", rating : ""};
            	res.render('index', {'json': json });
+            console.log(json);
         }
     })
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
