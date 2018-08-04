@@ -24,7 +24,8 @@ app.get('/', function(req, res) {
             var $ = cheerio.load(html);
             var title, release, rating;
             var json = { title : "", release : "", rating : ""};
-           	res.json('index', {'json': json });
+           	//res.render('index', {'json': json });
+           	res.json({'json': json });
         }
     })
 });
