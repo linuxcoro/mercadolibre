@@ -27,7 +27,20 @@ app.get('/', function(req, res) {
            	//res.render('index', {'json': json });
            	
 
-	           	res.json({'json': $('.g-itemImage').text() });
+           	//res.json({'json': $('.g-itemImage').text() });
+
+            $('.g-itemImage').filter(function(){
+                var data = $(this);
+
+                // The .star-box-giga-star class was exactly where we wanted it to be.
+                // To get the rating, we can simply just get the .text(), no need to traverse the DOM any further
+
+                rating = data.text();
+
+                json.rating = rating;
+           		res.json({'json': json.rating });
+            })
+
 
 
         }
