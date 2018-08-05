@@ -56,20 +56,12 @@ app.get('/', function(req, res) {
 	axios.get(base_url).then( (response) => {
 	  let $ = cheerio.load(response.data);
 	  let kurs = [];
-	  $('.g-itemImage').each( (i, elm) => {
+	  $('img').each( (i, elm) => {
 	    kurs.push( {
 	      currency: $(elm).children().first().text(),
 	      erate: {
 	        sell: $(elm).children().eq(0).first().text(),
 	        buy: $(elm).children().eq(2).first().text()
-	      },
-	      tt: {
-	        sell: $(elm).children().eq(3).first().text(),
-	        buy: $(elm).children().eq(4).first().text()
-	      },
-	      notes: {
-	        sell: $(elm).children().eq(5).first().text(),
-	        buy: $(elm).children().eq(6).first().text()
 	      }
 	    });
 	  });
