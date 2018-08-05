@@ -25,7 +25,14 @@ app.get('/', function(req, res) {
             var title, release, rating;
             var json = { title : "", release : "", rating : ""};
            	//res.render('index', {'json': json });
-           	res.json({'json': html });
+           	
+
+			$('.g-itemImage').filter(function(){
+                var data = $(this);
+	           	res.json({'json': data });
+			}
+
+
         }
     })
 });
