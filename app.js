@@ -18,25 +18,42 @@ var app = express();
 
 
 app.get('/', function(req, res) {
-    url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
-    request(url, function(error, response, html){
-        if(!error){
-            //var $ = cheerio.load(html);
-            //var title, release, rating;
-            //var json = { title : "", release : "", rating : ""};
-           	//res.render('index', {'json': json });
-           	
 
-           	//res.json({'json': $('.g-itemImage').text() });
+	let axios = require('axios');
+	let cheerio = require('cheerio');
+
+	let base_url = 'http://www.bca.co.id/id/Individu/Sarana/Kurs-dan-Suku-Bunga/Kurs-dan-Kalkulator';
+
+	axios.get(base_url).then( (response) => {
+	  let $ = cheerio.load(response.data);
+	  let kurs = [];
+	  $('tr', '.text-right').each( (i, elm) => {
+	    kurs.push( {
+	      currency: $(elm).children().first().text(),
+	      erate: {
+	        sell: $(elm).children().eq(1).first().text(),
+	        buy: $(elm).children().eq(2).first().text()
+	      },
+	      tt: {
+	        sell: $(elm).children().eq(3).first().text(),
+	        buy: $(elm).children().eq(4).first().text()
+	      },
+	      notes: {
+	        sell: $(elm).children().eq(5).first().text(),
+	        buy: $(elm).children().eq(6).first().text()
+	      }
+	    });
+	  });
+	  return(kurs);
+	})
+	.then ( (kurs) => {
+	  res.json(kurs);
+	});
 
 
-            var $ = cheerio.load(html);
-           	res.json({'json': html });
 
 
 
-        }
-    })
 });
 
 
