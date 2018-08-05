@@ -27,11 +27,7 @@ app.get('/', function(req, res) {
            	//res.render('index', {'json': json });
            	
 
-			$('.g-itemImage').filter(function(){
-                var data = $(this);
-                title = data.children().first().text();
-	           	res.json({'json': title });
-			}
+	           	res.json({'json': $('.g-itemImage').text() });
 
 
         }
