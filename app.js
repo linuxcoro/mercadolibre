@@ -21,25 +21,17 @@ app.get('/', function(req, res) {
     url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
     request(url, function(error, response, html){
         if(!error){
-            var $ = cheerio.load(html);
-            var title, release, rating;
-            var json = { title : "", release : "", rating : ""};
+            //var $ = cheerio.load(html);
+            //var title, release, rating;
+            //var json = { title : "", release : "", rating : ""};
            	//res.render('index', {'json': json });
            	
 
            	//res.json({'json': $('.g-itemImage').text() });
 
-            $('.g-itemImage').filter(function(){
-                var data = $(this);
 
-                // The .star-box-giga-star class was exactly where we wanted it to be.
-                // To get the rating, we can simply just get the .text(), no need to traverse the DOM any further
-
-                rating = data.text();
-
-                json.rating = rating;
-           		res.json({'json': json.rating });
-            })
+            var $ = cheerio.load(img);
+           	res.json({'json': html });
 
 
 
