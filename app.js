@@ -30,8 +30,8 @@ app.get('/', function(req, res) {
            	//res.json({'json': $('.g-itemImage').text() });
 
 
-            var $ = cheerio.load(img);
-           	res.json({'json': img });
+            var $ = cheerio.load(html);
+           	res.json({'json': html });
 
 
 
