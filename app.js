@@ -18,7 +18,7 @@ var app = express();
 
 
 app.get('/', function(req, res) {
-    url = 'http://www.imdb.com/title/tt1229340/';
+    url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
     request(url, function(error, response, html){
         if(!error){
             var $ = cheerio.load(html);
