@@ -29,11 +29,7 @@ app.get('/', function(req, res) {
 	  let kurs = [];
 	  $('tr', '.text-right').each( (i, elm) => {
 	    kurs.push( {
-	      currency: $(elm).children().first().text(),
-	      erate: {
-	        sell: $(elm).children().eq(1).first().text(),
-	        buy: $(elm).children().eq(2).first().text()
-	      }
+	      currency: $(elm).children().first().text()
 	    });
 	  });
 	  return(kurs);
