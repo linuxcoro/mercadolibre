@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
 	axios.get(base_url).then( (response) => {
 	  let $ = cheerio.load(response.data);
 	  let kurs = [];
-	  $('li', '.nav_last').each( (i, elm) => {
+	  $('td', '.navFooterDescItem').each( (i, elm) => {
 	    kurs.push( {
 	      currency: $(elm).children(0).first().text(),
 	      erate: {
