@@ -22,12 +22,12 @@ app.get('/', function(req, res) {
 	let axios = require('axios');
 	let cheerio = require('cheerio');
 
-	let base_url = 'http://www.bca.co.id/id/Individu/Sarana/Kurs-dan-Suku-Bunga/Kurs-dan-Kalkulator';
+	let base_url = 'https://www.amazon.com/gp/registry/wishlist/1A7GB9IL1UAK2';
 
 	axios.get(base_url).then( (response) => {
 	  let $ = cheerio.load(response.data);
 	  let kurs = [];
-	  $('tr', '.text-right').each( (i, elm) => {
+	  $('li', '.nav_last').each( (i, elm) => {
 	    kurs.push( {
 	      currency: $(elm).children().first().text()
 	    });
