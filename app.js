@@ -21,19 +21,12 @@ app.get('/', function(req, res) {
     url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
     request(url, function(error, response, html){
         if(!error){
-
-/*
-            var $ = cheerio.load(html);
-            var imagen = $('.g-itemImage img').attr("src");
-           	res.render('index', {'json': imagen });
-*/           	
-
 			let $ = cheerio.load(html);
 			let kurs = [];
 			$('.g-itemImage img').each(function(i, elem) {
 				kurs[i] = $(this).attr("src");
 			});
-           	res.render('index', {'json': kurs });
+           	res.render('index', {'json': kurs.toArray() });
 
         }
     })
