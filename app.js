@@ -18,12 +18,12 @@ var app = express();
 
 
 app.get('/', function(req, res) {
-	var $ = cheerio.load(body);
-
-	res.json(body);
-
-
-
+	request('https://www.amazon.com/gp/registry/wishlist/1A7GB9IL1UAK2', function(err, resp, html) {
+		if (!err){
+			const $ = cheerio.load(html);
+			res.json(html);
+		}
+	}
 });
 
 
