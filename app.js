@@ -28,20 +28,12 @@ app.get('/', function(req, res) {
            	res.render('index', {'json': imagen });
 */           	
 
-	  let $ = cheerio.load(html);
-	  let kurs = [];
-	  $('.g-itemImage img').each( (i, elm) => {
-	    kurs.push( {
-	      currency: $(elm).attr("src"),
-
-	    });
-	  });
-	  return(kurs);
-	})
-	.then ( (kurs) => {
-	  res.json(kurs);
-	});
-
+			let $ = cheerio.load(html);
+			let kurs = [];
+			$('.g-itemImage img').each(function(i, elem) {
+				kurs[i] = $(this).text();
+			});
+           	res.render('index', {'json': kurs });
 
         }
     })
