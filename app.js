@@ -24,9 +24,9 @@ app.get('/', function(req, res) {
             var $ = cheerio.load(html);
 
 
-            var imagen = $('.g-itemImage img').text()
-
-           	res.render('index', {'json': imagen });
+            var imagen = $('.g-itemImage img').text();
+            var x = imagen.text();
+           	res.render('index', {'json': x });
            	
 
 
