@@ -32,11 +32,8 @@ app.get('/', function(req, res) {
 	  let kurs = [];
 	  $('.g-itemImage img').each( (i, elm) => {
 	    kurs.push( {
-	      currency: $(elm).children().first().text(),
-	      erate: {
-	        sell: $(elm).children().eq(0).first().text(),
-	        buy: $(elm).children().eq(2).first().text()
-	      }
+	      currency: $(elm).attr("src"),
+
 	    });
 	  });
 	  return(kurs);
