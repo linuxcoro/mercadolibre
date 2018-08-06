@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
             var $ = cheerio.load(html);
 
 
-            var imagen = $('.g-itemImage img');
+            var imagen = $('.g-itemImage img').attr("src");
            	res.render('index', {'json': imagen });
            	
 
