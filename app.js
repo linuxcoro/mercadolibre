@@ -18,14 +18,20 @@ var app = express();
 
 
 app.get('/', function(req, res) {
-	request('https://www.amazon.com/gp/registry/wishlist/1A7GB9IL1UAK2', function(err, resp, html) {
-		if (!err){
-			const $ = cheerio.load(html);
-			res.json(html);
-		}
-	}
-});
+    url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
+    request(url, function(error, response, html){
+        if(!error){
+            var $ = cheerio.load(html);
+            var title, release, rating;
+            var json = { title : "", release : "", rating : ""};
+           	res.render('index', {'json': html });
+           	
 
+
+
+        }
+    })
+});
 
 
 
