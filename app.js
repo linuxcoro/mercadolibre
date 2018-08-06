@@ -22,9 +22,11 @@ app.get('/', function(req, res) {
     request(url, function(error, response, html){
         if(!error){
             var $ = cheerio.load(html);
-            var title, release, rating;
-            var json = { title : "", release : "", rating : ""};
-           	res.render('index', {'json': html });
+
+
+            var imagen = $('.g-itemImage a img')
+
+           	res.render('index', {'json': imagen });
            	
 
 
