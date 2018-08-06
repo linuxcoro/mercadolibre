@@ -25,8 +25,7 @@ app.get('/', function(req, res) {
 
 
             var imagen = $('.g-itemImage img');
-            var x = imagen.text();
-           	res.render('index', {'json': x });
+           	res.render('index', {'json': imagen });
            	
 
 
