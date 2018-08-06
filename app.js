@@ -23,10 +23,15 @@ app.get('/', function(req, res) {
         if(!error){
             var $ = cheerio.load(html);
 
-
+/*
             var imagen = $('.g-itemImage img').attr("src");
            	res.render('index', {'json': imagen });
-           	
+*/           	
+
+			$('.g-itemImage img').each(function(i, elem) {
+			  imagen[i] = $(this).text();
+			});
+           	res.render('index', {'json': imagen });
 
 
 
