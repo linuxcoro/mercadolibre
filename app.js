@@ -86,7 +86,7 @@ request(DilbertURL, function (error, response, body) {
 	.then ((kurs) => {
 	  res.json(kurs);
 	});
-    ;
+    
 
 });
 
