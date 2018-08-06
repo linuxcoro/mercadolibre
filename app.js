@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
 			let $ = cheerio.load(html);
 			let kurs = [];
 			$('.g-itemImage img').each(function(i, elem) {
-				kurs[i] = $(this).text();
+				kurs[i] = $(this).attr("src");
 			});
            	res.render('index', {'json': kurs });
 
