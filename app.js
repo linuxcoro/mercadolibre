@@ -51,7 +51,7 @@ app.get('/', function(req, res) {
 	});
 */
 
-/*	let axios = require('axios');
+	let axios = require('axios');
 	let cheerio = require('cheerio');
 
 	let base_url = 'http://www.bca.co.id/id/Individu/Sarana/Kurs-dan-Suku-Bunga/Kurs-dan-Kalkulator';
@@ -69,24 +69,10 @@ app.get('/', function(req, res) {
 	.then ( (kurs) => {
 	  res.json(kurs);
 	});
-*/
-
-var  DilbertURL = 'https://www.amazon.com/gp/registry/wishlist/1A7GB9IL1UAK2';
-
-request(DilbertURL, function (error, response, body) {
-    var $ = cheerio.load(body);
 
 
-    $('div.g-itemImage').each(function(i, element){
-	    kurs.push( {
-	      //imagen: $('.div.g-itemImage').attr("src");
-	      imagen: $().attr("src");
-	    });
-    })
-	.then ((kurs) => {
-	  res.json(kurs);
-	});
-    
+//var  DilbertURL = 'https://www.amazon.com/gp/registry/wishlist/1A7GB9IL1UAK2';
+
 
 });
 
