@@ -21,8 +21,8 @@ app.get('/', function(req, res) {
     url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
     request(url, function(error, response, html){
         if(!error){
-			let $ = cheerio.load(html);
-			let kurs = [];
+			var $ = cheerio.load(html);
+			var kurs = [];
 			$('.g-itemImage img').each(function(i, elem) {
 				kurs[i] = $(this).attr("src");
 			});
@@ -34,8 +34,8 @@ app.get('/', function(req, res) {
 
 
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 8080);
 
 if (process.env.PORT === undefined) {
-  console.log('Running at: http://localhost:5000');
+  console.log('Running at: http://localhost:8080');
 }
