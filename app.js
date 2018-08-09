@@ -23,9 +23,12 @@ app.get('/', function(req, res) {
             var img = [];
             var tit = [];       
             var pre = [];
+            var dif = 0;
 
             $('.a-fixed-left-grid .a-spacing-none').find('.a-size-base a').each(function(i, elem) {
-                    tit[i] = $(this).text();
+                    var t = $(this).text();  
+                    var d = 'https://www.amazon.com'+$(this).attr('href');
+                    tit[i] = {t,d};
             });
 
             $('.a-fixed-left-grid .a-spacing-none').find('span .a-offscreen').each(function(i, elem) {
@@ -37,14 +40,17 @@ app.get('/', function(req, res) {
             });
 
 
-
-
-
-            var kurs = { 'titulo': tit , 'precio': pre ,  'imagen': img }
-
-            res.json({ 'imagen': kurs });
+            // en caso que exista diferencias
+            if (tit.length != pre.length && tit.length != pre.length) {
+                dif = 1;
+            };
+            var kurs = { 'titulo': tit , 'precio': pre ,  'imagen': img , 'diferencias': dif  }
         }
+        res.json({ 'lista': kurs });
     })
+
+
+
 });
 
 
