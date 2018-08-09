@@ -4,12 +4,11 @@ var path = require('path'),
     dust = require('dustjs-helpers'),
     request = require('request'),
     axios=require('axios'),
+    crypto = require('crypto'),
     express = require('express');
 
 var cheerio = require('cheerio');
-
 var app = express();
-
     app.engine('dust', cons.dust);
     app.set('view engine', 'dust');
     app.set('views', __dirname + '/views');
@@ -21,14 +20,15 @@ app.get('/', function(req, res) {
         if(!error){
             var $ = cheerio.load(html);
             var img = [];
-            var tit = [];       
+            var tit = [];
             var pre = [];
+            var todo = [];
             var dif = 0;
 
             $('.a-fixed-left-grid .a-spacing-none').find('.a-size-base a').each(function(i, elem) {
-                    var t = $(this).text();  
-                    var d = 'https://www.amazon.com'+$(this).attr('href');
-                    tit[i] = {t,d};
+                var t = $(this).text();  
+                var d = 'https://www.amazon.com'+$(this).attr('href');
+                tit[i] = {t,d};
             });
 
             $('.a-fixed-left-grid .a-spacing-none').find('span .a-offscreen').each(function(i, elem) {
@@ -39,14 +39,22 @@ app.get('/', function(req, res) {
                 img[i] = $(this).attr("src");
             });
 
-
             // en caso que exista diferencias
             if (tit.length != pre.length && tit.length != pre.length) {
                 dif = 1;
             };
-            var kurs = { 'titulo': tit , 'precio': pre ,  'imagen': img , 'diferencias': dif  }
+
+
+
+            //var kurs = { 'titulo': tit , 'precio': pre ,  'imagen': img , 'diferencias': dif  }
         }
-        res.json({ 'lista': kurs });
+
+        for (var i = tit.length - 1; i >= 0; i--) {
+            todo[i] = [ tit[i] , pre[i] , img[i] ]
+        };
+        
+
+        res.json({ 'lista': todo });
     })
 
 
