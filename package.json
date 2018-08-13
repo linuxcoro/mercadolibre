@@ -1,5 +1,5 @@
 {
-  "name": "hello-node",
+  "name": "mercadolibre",
   "version": "0.0.1",
   "scripts": {
     "start": "node app.js"
@@ -27,6 +27,7 @@
     "axios": "*",
     "node-google-translate-skidz": "*",
     "pg": "*",
-    "cheerio": "*"
+    "cheerio": "*",
+    "crypto-js": "*"
   }
 }

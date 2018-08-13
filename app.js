@@ -4,10 +4,10 @@ var path = require('path'),
     dust = require('dustjs-helpers'),
     request = require('request'),
     axios=require('axios'),
-    crypto = require('crypto'),
-    express = require('express');
-
-var cheerio = require('cheerio');
+    cryptojs = require("crypto-js"),
+    express = require('express'),
+    cheerio = require('cheerio');
+    
 var app = express();
     app.engine('dust', cons.dust);
     app.set('view engine', 'dust');
@@ -21,14 +21,16 @@ app.get('/', function(req, res) {
             var $ = cheerio.load(html);
             var img = [];
             var tit = [];
+            var mystr = [];
             var pre = [];
             var todo = [];
             var dif = 0;
 
             $('.a-fixed-left-grid .a-spacing-none').find('.a-size-base a').each(function(i, elem) {
                 var t = $(this).text();  
-                var d = 'https://www.amazon.com'+$(this).attr('href');
-                tit[i] = {t,d};
+                var detalle = 'https://www.amazon.com'+$(this).attr('href');
+                mystr[i] = cryptojs.SHA256(detalle).toString();
+                tit[i] = {t,detalle};
             });
 
             $('.a-fixed-left-grid .a-spacing-none').find('span .a-offscreen').each(function(i, elem) {
@@ -43,22 +45,19 @@ app.get('/', function(req, res) {
             if (tit.length != pre.length && tit.length != pre.length) {
                 dif = 1;
             };
-
-
-
-            //var kurs = { 'titulo': tit , 'precio': pre ,  'imagen': img , 'diferencias': dif  }
         }
 
         for (var i = tit.length - 1; i >= 0; i--) {
-            todo[i] = [ tit[i] , pre[i] , img[i] ]
-        };
-        
+            var hash = mystr[i]
+            var titulo=tit[i]
+            var precio=pre[i]
+            var imagen=img[i]
 
+            var kurs = {hash , titulo , precio , imagen}
+            todo[i] = kurs
+        };
         res.json({ 'lista': todo });
     })
-
-
-
 });
 
 
