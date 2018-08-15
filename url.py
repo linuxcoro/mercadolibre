@@ -31,7 +31,7 @@ import psycopg2
 conn = psycopg2.connect("dbname=ddjgevmsurduca, user=nkhkzwpxietfbc, password=52140030c14ffbdd15a93968ba3e186a59acff91055d061798d7d86f7a9b21e9, host=ec2-50-17-194-129.compute-1.amazonaws.com, port=5432")
 cur = conn.cursor()
 
-cur.execute("insert into medidas (nombre,precio,imagen) VALUES('2 Pack - DIRECTV IR / RF Universal Remote Control (RC66RX)',9.64,'71lK+J4v9VL._SS135_.jpg')")
+cur.execute("insert into articulos (nombre,precio,imagen) VALUES('2 Pack - DIRECTV IR / RF Universal Remote Control (RC66RX)',9.64,'71lK+J4v9VL._SS135_.jpg')")
 
 conn.commit()
 cur.close()
