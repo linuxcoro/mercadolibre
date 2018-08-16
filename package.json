@@ -29,6 +29,7 @@
     "pg": "*",
     "cheerio": "*",
     "crypto-js": "*",
-    "mongodb": "*"
+    "mongodb": "*",
+    "https": "*"
   }
 }
