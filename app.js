@@ -18,13 +18,13 @@ app.get('/', function(req, res) {
     url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
     request(url, function(error, response, html){
         if(!error){
-            var $ = cheerio.load(html);
-            var img = [];
-            var tit = [];
-            var mystr = [];
-            var pre = [];
-            var todo = [];
-            var dif = 0;
+            let $ = cheerio.load(html);
+            let img = [];
+            let tit = [];
+            let mystr = [];
+            let pre = [];
+            let todo = [];
+            let dif = 0;
 
             $('.a-fixed-left-grid .a-spacing-none').find('.a-size-base a').each(function(i, elem) {
                 var t = $(this).text();  

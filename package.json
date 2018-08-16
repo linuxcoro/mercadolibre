@@ -17,7 +17,7 @@
   "dependencies": {
     "body-parser": "*",
     "method-override": "*",
-    "safe-buffer": "*",    
+    "safe-buffer": "*",
     "consolidate": "*",
     "dust": "*",
     "request": "*",
@@ -28,6 +28,7 @@
     "node-google-translate-skidz": "*",
     "pg": "*",
     "cheerio": "*",
-    "crypto-js": "*"
+    "crypto-js": "*",
+    "mongodb": "*"
   }
 }
