@@ -26,8 +26,18 @@ request(url, function(error, r, html){
             MongoClient.connect(con, function(err, db) {
                 if (err) throw err;
                 var dbo = db.db("linuxcoro");
-                var busca = dbo.collection("articles").findOne({'hash':element.hash})
-                console.log(busca)
+
+                dbo.collection("articles").findOne(({'hash':element.hash}, function(err, result) {
+                    if (err) { /* handle err */ }
+                
+                    if (result) {
+                        console.log('exist')
+                    } else {
+                        console.log('not exist')
+                    }
+                }
+
+
                 
 /* 
                 var myobj = {
