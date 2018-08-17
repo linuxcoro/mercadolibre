@@ -31,30 +31,26 @@ request(url, function(error, r, html){
                     if (err) { /* handle err */ }
                 
                     if (result) {
-                        console.log('exist')
-                    } else {
-                        console.log('not exist')
+                        continue
+                    }
+                    else {
+                        var myobj = {
+                            hash: element.hash,
+                            titulo: element.titulo.t,
+                            detalle: element.titulo.detalle,
+                            precio: element.precio,
+                            detalle: element.imagen
+                        };
+                        dbo.collection("articles").insertOne(myobj, function(err, res) {
+                          if (err) throw err;
+                          console.log("1 document inserted");
+                          db.close();
+                        });
                     }
                 })
 
 
-                
-/* 
-                var myobj = {
-                    hash: element.hash,
-                    titulo: element.titulo.t,
-                    detalle: element.titulo.detalle,
-                    precio: element.precio,
-                    detalle: element.imagen
-                };
-                dbo.collection("articles").insertOne(myobj, function(err, res) {
-                  if (err) throw err;
-                  console.log("1 document inserted");
-                  db.close();
-                });
-
- */
-
+ 
             });
         }
     }
