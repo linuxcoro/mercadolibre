@@ -31,7 +31,7 @@ request(url, function(error, r, html){
                     if (err) { /* handle err */ }
                 
                     if (result) {
-                        continue
+                        return true
                     }
                     else {
                         var myobj = {
