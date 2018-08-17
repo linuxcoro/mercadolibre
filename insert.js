@@ -23,7 +23,7 @@ request(url, function(error, r, html){
  */
 
 
-            MongoClient.connect(con, function(err, db) {
+            MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
                 if (err) throw err;
                 var dbo = db.db("linuxcoro");
 
