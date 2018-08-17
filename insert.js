@@ -33,7 +33,7 @@ request(url, function(error, r, html){
                     precio: element.precio,
                     detalle: element.imagen
                 };
-                dbo.collection("usuarios").insertOne(myobj, function(err, res) {
+                dbo.collection("articles").insertOne(myobj, function(err, res) {
                   if (err) throw err;
                   console.log("1 document inserted");
                   db.close();
