@@ -4,7 +4,7 @@ let url='https://linuxcoro.herokuapp.com/'
 
  /* insertar valores */
  var MongoClient = require('mongodb').MongoClient;
- var url = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
+ var con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
  
 
 request(url, function(error, r, html){
@@ -23,7 +23,7 @@ request(url, function(error, r, html){
  */
 
 
-            MongoClient.connect(url, function(err, db) {
+            MongoClient.connect(con, function(err, db) {
                 if (err) throw err;
                 var dbo = db.db("linuxcoro");
                 var myobj = {
