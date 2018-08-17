@@ -26,6 +26,13 @@ request(url, function(error, r, html){
             MongoClient.connect(con, function(err, db) {
                 if (err) throw err;
                 var dbo = db.db("linuxcoro");
+                dbo.collection("articles").find_one({'hash':element.hash},function(err, res){
+                    if (err) throw err;
+                    console.log("this values exist");
+                    db.close();  
+                })
+                
+/* 
                 var myobj = {
                     hash: element.hash,
                     titulo: element.titulo.t,
@@ -38,6 +45,9 @@ request(url, function(error, r, html){
                   console.log("1 document inserted");
                   db.close();
                 });
+
+ */
+
               });
         }
     }
