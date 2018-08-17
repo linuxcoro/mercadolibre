@@ -26,11 +26,8 @@ request(url, function(error, r, html){
             MongoClient.connect(con, function(err, db) {
                 if (err) throw err;
                 var dbo = db.db("linuxcoro");
-                dbo.collection("articles").find_one({'hash':element.hash},function(err, res){
-                    if (err) throw err;
-                    console.log("this values exist");
-                    db.close();  
-                })
+                var busca = dbo.collection("articles").find_one({'hash':element.hash})
+                console.log(busca)
                 
 /* 
                 var myobj = {
@@ -48,7 +45,7 @@ request(url, function(error, r, html){
 
  */
 
-              });
+            });
         }
     }
 })
