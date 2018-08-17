@@ -30,10 +30,7 @@ request(url, function(error, r, html){
                 dbo.collection("articles").findOne({'hash':element.hash}, function(err, result) {
                     if (err) { /* handle err */ }
                 
-                    if (result) {
-                        return true
-                    }
-                    else {
+                    if (!result) {
                         var myobj = {
                             hash: element.hash,
                             titulo: element.titulo.t,
