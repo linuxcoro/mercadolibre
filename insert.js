@@ -27,7 +27,7 @@ request(url, function(error, r, html){
                 if (err) throw err;
                 var dbo = db.db("linuxcoro");
 
-                dbo.collection("articles").findOne(({'hash':element.hash}, function(err, result) {
+                dbo.collection("articles").findOne({'hash':element.hash}, function(err, result) {
                     if (err) { /* handle err */ }
                 
                     if (result) {
@@ -35,7 +35,7 @@ request(url, function(error, r, html){
                     } else {
                         console.log('not exist')
                     }
-                }
+                })
 
 
                 
