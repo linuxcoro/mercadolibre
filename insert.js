@@ -26,7 +26,7 @@ request(url, function(error, r, html){
             MongoClient.connect(con, function(err, db) {
                 if (err) throw err;
                 var dbo = db.db("linuxcoro");
-                var busca = dbo.collection("articles").find_one({'hash':element.hash})
+                var busca = dbo.collection("articles").findOne({'hash':element.hash})
                 console.log(busca)
                 
 /* 
