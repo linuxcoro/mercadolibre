@@ -5,13 +5,13 @@ const request = require('request')
 let url='https://linuxcoro.herokuapp.com/'
 
  /* insertar valores */
- var MongoClient = require('mongodb').MongoClient;
- var con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
+ const MongoClient = require('mongodb').MongoClient;
+ const con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
 
 function detalle(str){
-    let url=str.des
-    let detalle
-    let tod=[]
+    var url=str.des
+    var detalle
+    var tod=[]
     
     request(url, function(error, response, html){
         if(!error){
@@ -23,7 +23,7 @@ function detalle(str){
                     detalle += $(this).text().trim()
             })
             // imagenes        
-            let img = $('#landingImage').attr('data-old-hires')
+            var img = $('#landingImage').attr('data-old-hires')
             tod = {str,detalle,img}
             if(tod.detalle!=undefined && tod.img!=""){
                 //MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
@@ -67,12 +67,12 @@ function detalle(str){
 
 
 request(url, function(error, r, html){
-    let arr = JSON.parse(html)
-    let det = []
+    const arr = JSON.parse(html)
+    var det = []
     if(r.statusCode==200){
         art=arr.lista
         for (let index = 0; index < art.length; index++) {
-            const element = art[index];
+            var element = art[index];
             det = "https://www.amazon.com/dp/"+element.titulo.detalle.split('/')[4]
  
             var myobj = {
@@ -81,14 +81,8 @@ request(url, function(error, r, html){
                 des: det,
                 precio: element.precio
             };
-
             detalle(myobj)
-
         }
-
-
-
-        
     }
 })
 
