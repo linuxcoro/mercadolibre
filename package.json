@@ -30,6 +30,7 @@
     "cheerio": "*",
     "crypto-js": "*",
     "mongodb": "*",
-    "https": "*"
+    "https": "*",
+    "async":"^2.6.1"
   }
 }
