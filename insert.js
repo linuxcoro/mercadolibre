@@ -19,7 +19,7 @@ function detalle(str){
             // detalles
             $('#feature-bullets').find('.a-list-item').each(function(i,elem){
                 if($(this).text().trim()!==undefined)
-                    detalle += " "+$(this).text().trim().replace('♡ღ❤',' ')
+                    detalle += " "+$(this).text().trim()
             })
             // imagenes        
             var img = $('#landingImage').attr('data-old-hires')
