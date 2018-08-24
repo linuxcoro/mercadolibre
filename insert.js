@@ -8,18 +8,18 @@ var MongoClient = require('mongodb').MongoClient;
 var con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
 
 function detalle(str){
-    var url=str.des
+    var urls=str.des
     var detalle
     var tod=[]
     
-    request(url, function(error, response, html){
+    request(urls, function(error, response, html){
         if(!error){
             var $ = cheerio.load(html);
             
             // detalles
             $('#feature-bullets').find('.a-list-item').each(function(i,elem){
                 if($(this).text().trim()!==undefined)
-                    detalle += " "+$(this).text().trim()
+                    detalle += " "+$(this).text().trim().replace('undefined','')
             })
             // imagenes        
             var img = $('#landingImage').attr('data-old-hires')
@@ -33,29 +33,29 @@ function detalle(str){
 }
 
 function insertar_db(tod){
-                 MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
-                    var dbo = db.db("linuxcoro");
-                    dbo.collection("articles").findOne({'hash':tod.str.hash}, function(err, result) {
-                        if (!result) {
-                            var myobj = {
-                                hash: tod.str.hash,
-                                titulo_ingles: tod.str.titulo,
-                                detalle_ingles: tod.detalle,
-                                precio: tod.str.precio,
-                                imagen: tod.img
-                            };
-                            dbo.collection("articles").insertOne(myobj, function(err, res) {
-                              if (err) throw err;
-                              console.log("1 document inserted");
-                              db.close();
-                            });
-                        }
-                        else{
-                            db.close();
-                            console.log('no')
-                        }
-                    }) 
-                });
+        MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
+        var dbo = db.db("linuxcoro");
+        dbo.collection("articles").findOne({'hash':tod.str.hash}, function(err, result) {
+            if (!result) {
+                var myobj = {
+                    hash: tod.str.hash,
+                    titulo_ingles: tod.str.titulo,
+                    detalle_ingles: tod.detalle,
+                    precio: tod.str.precio,
+                    imagen: tod.img
+                }
+                dbo.collection("articles").insertOne(myobj, function(err, res) {
+                    if (err) throw err;
+                    console.log("1 document inserted");
+                    db.close();
+                })
+            }
+            else{
+                db.close();
+                console.log('no')
+            }
+        }) 
+    })
 }
 
 /* halando datos url */
@@ -78,5 +78,3 @@ request(url, function(error, r, html){
         }
     }
 })
-
-
