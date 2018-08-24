@@ -15,9 +15,9 @@ request(url, function(error, response, html){
         
         for(i=0;i<arr.length;i++){
             var element = arr[i]
-            console.log(element)
+            //console.log(element)
             //titulo(element)
-            //detalle(element)
+            detalle(element)
                //almacenar en una base de datos
             
 /* 
