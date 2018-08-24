@@ -74,7 +74,8 @@ request(url, function(error, r, html){
                 des: det,
                 precio: element.precio
             };
-            detalle(myobj)
+            //detalle(myobj)
+            console.log(myobj)
         }
     }
 })
