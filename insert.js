@@ -40,9 +40,7 @@ function insertar_db(tod){
                             var myobj = {
                                 hash: tod.str.hash,
                                 titulo_ingles: tod.str.titulo,
-                                detalle_ingles: tod.detalle.replace('undefined',''),
-                                titulo_esp: "",
-                                detalle_esp: "",
+                                detalle_ingles: tod.detalle,
                                 precio: tod.str.precio,
                                 imagen: tod.img
                             };
