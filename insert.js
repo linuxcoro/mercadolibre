@@ -1,7 +1,7 @@
 /* consultar la api */
 const cheerio = require('cheerio')
 const request = require('request')
-let url='https://linuxcoro.herokuapp.com/'
+const url='https://linuxcoro.herokuapp.com/'
 
 /* insertar valores */
 const MongoClient = require('mongodb').MongoClient;
