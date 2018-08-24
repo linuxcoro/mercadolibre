@@ -1,11 +1,11 @@
 /* consultar la api */
-const cheerio = require('cheerio')
-const request = require('request')
-const url='https://linuxcoro.herokuapp.com/'
+var cheerio = require('cheerio')
+var request = require('request')
+var url='https://linuxcoro.herokuapp.com/'
 
 /* insertar valores */
-const MongoClient = require('mongodb').MongoClient;
-const con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
+var MongoClient = require('mongodb').MongoClient;
+var con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
 
 function detalle(str){
     var url=str.des
