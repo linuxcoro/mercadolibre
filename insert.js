@@ -33,7 +33,7 @@ function detalle(str){
                             var myobj = {
                                 hash: tod.str.hash,
                                 titulo_ingles: tod.str.titulo,
-                                detalle_ingles: tod.detalle.substr(9),
+                                detalle_ingles: tod.detalle,
                                 titulo_esp: "",
                                 detalle_esp: "",
                                 precio: tod.str.precio,
