@@ -15,22 +15,24 @@
     "gulp-livereload": "^3.8.1"
   },
   "dependencies": {
+    "async": "^2.6.1",
+    "axios": "*",
     "body-parser": "*",
-    "method-override": "*",
-    "safe-buffer": "*",
+    "cheerio": "*",
     "consolidate": "*",
+    "crypto-js": "*",
     "dust": "*",
-    "request": "*",
     "dustjs-helpers": "*",
     "dustjs-linkedin": "*",
     "express": "*",
-    "axios": "*",
-    "node-google-translate-skidz": "*",
-    "pg": "*",
-    "cheerio": "*",
-    "crypto-js": "*",
-    "mongodb": "*",
+    "translate": "^1.0.2",
+    "google-translate-api": "^2.3.0",
+    "translate-api": "0.3.12",
     "https": "*",
-    "async":"^2.6.1"
+    "method-override": "*",
+    "mongodb": "*",
+    "pg": "*",
+    "request": "*",
+    "safe-buffer": "*"
   }
 }

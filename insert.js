@@ -1,12 +1,11 @@
 /* consultar la api */
-const cheerio = require('cheerio');
+const cheerio = require('cheerio')
 const request = require('request')
-
 let url='https://linuxcoro.herokuapp.com/'
 
- /* insertar valores */
- const MongoClient = require('mongodb').MongoClient;
- const con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
+/* insertar valores */
+const MongoClient = require('mongodb').MongoClient;
+const con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
 
 function detalle(str){
     var url=str.des
@@ -33,8 +32,10 @@ function detalle(str){
                         if (!result) {
                             var myobj = {
                                 hash: tod.str.hash,
-                                titulo: tod.str.titulo,
-                                detalle: tod.detalle,
+                                titulo_ingles: tod.str.titulo,
+                                detalle_ingles: tod.detalle.substr(9),
+                                titulo_esp: "",
+                                detalle_esp: "",
                                 precio: tod.str.precio.substr(1),
                                 imagen: tod.img
                             };
@@ -50,19 +51,11 @@ function detalle(str){
                         }
                     }) 
                 });
-
-
-
             }
         }
-        
-
     })
-
-
-
-
 }
+
 
 
 
