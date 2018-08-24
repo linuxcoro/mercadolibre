@@ -36,7 +36,7 @@ function detalle(str){
                                 detalle_ingles: tod.detalle.substr(9),
                                 titulo_esp: "",
                                 detalle_esp: "",
-                                precio: tod.str.precio.substr(1),
+                                precio: tod.str.precio,
                                 imagen: tod.img
                             };
                             dbo.collection("articles").insertOne(myobj, function(err, res) {
