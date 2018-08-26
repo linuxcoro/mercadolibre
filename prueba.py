@@ -1,2 +1,2 @@
 import os
-os.system('time')
+os.system('pwd')
