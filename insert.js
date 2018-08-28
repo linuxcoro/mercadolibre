@@ -20,18 +20,31 @@ request(url, function(error, r, html){
            //console.log(myobj)
            var myobj = {
                 hash: element.hash,
-                titulo: element.titulo.t,
+                title: element.titulo.t,
                 des: det,
+                titulo: "",
+                descripcion: "",
                 precio: element.precio
             }
+
+            /* console.log(index+myobj.title) */  
             if(myobj.titulo!=undefined && myobj.img!=""){
-                console.log('paso la condicion')
+                console.log('paso la condicion'+index)
                 insertardb(myobj)
             }
         }
     }
 })
 
+/* buscar */
+/* 
+function obtener(valor){
+    for(var i = 0; i < json.length; i++){
+      if(json[i].value == valor)
+        return json[i].label;
+    }
+}
+ */
 function insertardb(myobj){
     MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
         var dbo = db.db("linuxcoro");
