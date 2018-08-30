@@ -14,7 +14,7 @@ var app = express();
     app.set('views', __dirname + '/views');
 
 
-app.get('/', function(req, res) {
+app.get('/json', function(req, res) {
     url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
     request(url, function(error, response, html){
         if(!error){

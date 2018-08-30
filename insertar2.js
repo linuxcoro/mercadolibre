@@ -23,8 +23,7 @@ request(url, function(error, response, html){
         // imagenes        
         const img = $('#landingImage').attr('data-old-hires')
         if(det!=undefined){
-            spanish(hash,det,img)
-            console.log('-------------------')
+            spanish(hash,det,img)            
         }
      }
 })
@@ -32,46 +31,52 @@ request(url, function(error, response, html){
 function spanish(hash,det,img){
     var transText = det.replace('undefined'," ");
 
-/* 
-    console.log(hash);
-    console.log(img);
-    console.log(transText);
+//    var url2 = 'https://api.mlab.com/api/1/databases/linuxcoro/collections/articles?apiKey=DSgbEQwpXRchIpWtCLjgEH-h83rECC4i'
+    var url2 = 'https://api.mlab.com/api/1/databases/linuxcoro/collections/articles?q={"hash":"'+ hash +'"}&apiKey=DSgbEQwpXRchIpWtCLjgEH-h83rECC4i'
+    var titulo
+    request(url2, function(error, r, html){
+        const arr = JSON.parse(html)
+        titulo = arr[0].title
+        spanish_title(titulo)
+    })
 
- */    
+
     translate(transText, {to: 'es'}).then(res => {
         console.log(res.text);
-
-
-
         MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
             var dbo = db.db("linuxcoro");
             var myquery = { hash: hash };
-            var newvalues = { $set: {descripcion: res.text } };                            
+            var newvalues = { $set: {descripcion: res.text , imagen : img } };                            
             dbo.collection("articles").updateOne(myquery, newvalues, function(err, res) {
                 if (err) throw err;
-                console.log("1 document update");
+                console.log("insert descripcion");
                 db.close();
             });
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
         //=> I speak English
     }).catch(err => {
         console.error(err);
     });
 
 
-
 }
 
+
+function spanish_title(titulo){
+    translate(titulo, {to: 'es'}).then(res => {
+        console.log(res.text);
+        MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
+            var dbo = db.db("linuxcoro");
+            var myquery = { hash: hash };
+            var newvalues = { $set: { titulo: res.text } };                            
+            dbo.collection("articles").updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                console.log("insert titulo");
+                db.close();
+            });
+        });
+        //=> I speak English
+    }).catch(err => {
+        console.error(err);
+    });
+}

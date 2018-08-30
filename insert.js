@@ -24,7 +24,8 @@ request(url, function(error, r, html){
                 des: det,
                 titulo: "",
                 descripcion: "",
-                precio: element.precio
+                precio: element.precio,
+                imagen: ""
             }
 
             /* console.log(index+myobj.title) */  
