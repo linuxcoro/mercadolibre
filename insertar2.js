@@ -29,6 +29,7 @@ request(url, function(error, response, html){
 })
 
 function spanish(hash,det,img){
+    
     var transText = det.replace('undefined'," ");
 
 //    var url2 = 'https://api.mlab.com/api/1/databases/linuxcoro/collections/articles?apiKey=DSgbEQwpXRchIpWtCLjgEH-h83rECC4i'
