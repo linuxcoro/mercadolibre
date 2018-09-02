@@ -13,4 +13,4 @@ if r.status_code == 200:
 			filename = url.split('/')[-1]
 			r = requests.get(url, allow_redirects=True)
 			open('public/img/'+filename, 'wb').write(r.content)
-			print 'imagen guardada'
+			print ('imagen guardada')
