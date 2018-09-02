@@ -7,12 +7,9 @@ req = 'https://api.mlab.com/api/1/databases/linuxcoro/collections/articles?q={"h
 r = requests.get(req)
 if r.status_code == 200:
 	decoded = r.json()
-	#print decoded
-	#print sys.argv[1]
-
- 	for n in xrange(0,len(decoded)):
+	for n in xrange(0,len(decoded)):
 		url = decoded[n]['imagen']
- 		if url != "":
+		if url != "":
 			filename = url.split('/')[-1]
 			r = requests.get(url, allow_redirects=True)
 			open('public/img/'+filename, 'wb').write(r.content)
