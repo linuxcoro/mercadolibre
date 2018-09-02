@@ -7,7 +7,7 @@ req = 'https://api.mlab.com/api/1/databases/linuxcoro/collections/articles?q={"h
 r = requests.get(req)
 if r.status_code == 200:
 	decoded = r.json()
-	for n in xrange(0,len(decoded)):
+	for n in range(0,len(decoded)):
 		url = decoded[n]['imagen']
 		if url != "":
 			filename = url.split('/')[-1]
