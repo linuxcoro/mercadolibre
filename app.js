@@ -12,6 +12,7 @@ var app = express();
     app.engine('dust', cons.dust);
     app.set('view engine', 'dust');
     app.set('views', __dirname + '/views');
+    app.use(express.static(path.join(__dirname,'public')));
 
 
 app.get('/json', function(req, res) {
