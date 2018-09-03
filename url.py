@@ -7,5 +7,5 @@ if r.status_code == 200:
   for x in decoded:
     if len(x['descripcion']) == 0:
       os.system('node insertar2.js ' + x['des'].split('/')[-1] + ' ' + x['hash'])
-      os.system('python3 ima.py'+ ' ' + x['hash'])
-      #os.system('python ima.py'+ ' ' + x['hash'])
+      #os.system('python3 ima.py'+ ' ' + x['hash'])
+      os.system('python ima.py'+ ' ' + x['hash'])
