@@ -1,5 +1,27 @@
 {>"layout" /}
+<style type="text/css">
+.container{
+	display: grid;
+	grid-template-columns: repeat(3, 250px);	
+}
+.item{
+	border-radius: 5px;
+	padding: 10px;
+	background: #f2f2f2;
+} 
+.item img{
+	width:250px;
+	height:250px;
+	//max-width: 100%;
+}
+</style>
+
 {<body}
-	esto se mostrara ...<br>
-	{json}
+	<div class='container'>
+	{#json}
+		<div class='item'>
+			<img src='{@ima x="{imagen}" /}'>
+		</div>
+	{/json}
+	</div>
 {/body}
