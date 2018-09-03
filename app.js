@@ -71,7 +71,7 @@ app.get('/', function(req, res){
 
 	dust.helpers.ima = function (chunk, context, bodies, params) {
 	    var x = dust.helpers.tap(params.x, chunk, context),
-        xx = 'https://linuxcoro.herokuapp.com/img/'+x.split('/')[5];
+        xx = 'https://linuxcoro.herokuapp.com/img/'+x.split('/')[4]+'.jpg';
 	    return xx;
 	};
 
