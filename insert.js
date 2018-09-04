@@ -25,7 +25,8 @@ request(url, function(error, r, html){
                 titulo: "",
                 descripcion: "",
                 precio: element.precio,
-                imagen: ""
+                imagen: "",
+                status: ""
             }
 
             /* console.log(index+myobj.title) */  

@@ -20,10 +20,10 @@
 
 {<body}
 	<div class='container'>
-	{#json}
-		<div class='item'>
-			<img src='{@ima x="{des}" /}'>
-		</div>
-	{/json}
+		{#json}
+			<div class='item'>
+				<img src='{@ima x="{des}" /}'>
+			</div>
+		{/json}
 	</div>
 {/body}

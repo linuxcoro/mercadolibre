@@ -47,12 +47,14 @@ function spanish(hash,det,img){
         MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
             var dbo = db.db("linuxcoro");
             var myquery = { hash: hash };
-            var newvalues = { $set: {descripcion: res.text , imagen : img } };                            
-            dbo.collection("articles").updateOne(myquery, newvalues, function(err, res) {
-                if (err) throw err;
-                console.log("insert descripcion");
-                db.close();
-            });
+            if (img){
+                var newvalues = { $set: {descripcion: res.text , imagen : img , status : "1" } };
+                dbo.collection("articles").updateOne(myquery, newvalues, function(err, res) {
+                    if (err) throw err;
+                    console.log("insert descripcion");
+                    db.close();
+                });                
+            }
         });
         //=> I speak English
     }).catch(err => {

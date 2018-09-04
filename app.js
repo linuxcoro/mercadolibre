@@ -63,7 +63,6 @@ app.get('/json', function(req, res) {
 
 app.get('/', function(req, res){
     var url2 = 'https://api.mlab.com/api/1/databases/linuxcoro/collections/articles?apiKey=DSgbEQwpXRchIpWtCLjgEH-h83rECC4i'
-    var art=[]
     request(url2, function(error, r, html){
         const arr = JSON.parse(html)
         res.render('index', {'json': arr});
