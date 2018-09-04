@@ -31,6 +31,7 @@
     "mongodb": "*",
     "pg": "*",
     "request": "*",
-    "safe-buffer": "*"
+    "safe-buffer": "*",
+    "amazon-list-scraper": "^0.1.2"
   }
 }

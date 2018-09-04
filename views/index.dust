@@ -1,6 +1,7 @@
 {>"layout" /}
 <style type="text/css">
 .container{
+	grid-template-columns: none;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 300px);
 	grid-gap: 5px;
@@ -22,7 +23,13 @@
 	<div class='container'>
 		{#json}
 			<div class='item'>
+				<p><b>{titulo}</b></p>
 				<img src='{@ima x="{des}" /}'>
+				<p>{descripcion} <b>{precio}</b></p>
+				<div align="center">
+					<button onclick="window.location.href='{des}'">Continue</button>
+				</div>
+				
 			</div>
 		{/json}
 	</div>

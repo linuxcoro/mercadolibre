@@ -6,7 +6,8 @@ var path = require('path'),
     axios=require('axios'),
     cryptojs = require("crypto-js"),
     express = require('express'),
-    cheerio = require('cheerio');
+    cheerio = require('cheerio'),
+    AmazonListScraper = require('amazon-list-scraper').default;
     
 var app = express();
     app.engine('dust', cons.dust);
@@ -16,7 +17,19 @@ var app = express();
 
 
 app.get('/json', function(req, res) {
-    url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
+    //url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
+
+    const scraper = new AmazonListScraper();
+    scraper.scrape('https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/')
+      .then(items => {
+        //res.json(items);
+        res.json({ 'lista': items });
+      })
+      .catch(error => {
+      });    
+
+
+/*     
     request(url, function(error, response, html){
         if(!error){
             var $ = cheerio.load(html);
@@ -48,7 +61,7 @@ app.get('/json', function(req, res) {
             };
         }
 
-        for (var i = tit.length - 1; i >= 0; i--) {
+        for (var i = pre.length - 1; i >= 0; i--) {
             var hash = mystr[i]
             var titulo=tit[i]
             var precio=pre[i]
@@ -59,6 +72,8 @@ app.get('/json', function(req, res) {
         };
         res.json({ 'lista': todo });
     })
+
+ */    
 });
 
 app.get('/', function(req, res){

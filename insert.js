@@ -2,7 +2,8 @@
 var cheerio = require('cheerio')
 var request = require('request')
 var url='https://linuxcoro.herokuapp.com/json'
-
+//var url='http://localhost:8080/json'
+var cryptojs = require("crypto-js")
 /* insertar valores */
 var MongoClient = require('mongodb').MongoClient;
 var con = "mongodb://test:test123@ds243798.mlab.com:43798/linuxcoro";
@@ -13,28 +14,29 @@ request(url, function(error, r, html){
     var det = []
     if(r.statusCode==200){
         art=arr.lista
+
+ 
         for (var index = 0; index < art.length; index++) {
             var element = art[index];
-            det = "https://www.amazon.com/dp/"+element.titulo.detalle.split('/')[4]
+            det = "https://www.amazon.com/dp/"+element.productId
  
            //console.log(myobj)
            var myobj = {
-                hash: element.hash,
-                title: element.titulo.t,
+                hash: cryptojs.SHA256(element.productId).toString(),
+                title: element.title,
                 des: det,
                 titulo: "",
                 descripcion: "",
-                precio: element.precio,
-                imagen: "",
-                status: ""
+                precio: element.price,
+                imagen: ""
             }
 
-            /* console.log(index+myobj.title) */  
             if(myobj.titulo!=undefined && myobj.img!=""){
                 console.log('paso la condicion'+index)
                 insertardb(myobj)
             }
         }
+
     }
 })
 
