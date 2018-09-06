@@ -1,36 +1,18 @@
 {>"layout" /}
-<style type="text/css">
-.container{
-	grid-template-columns: none;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, 300px);
-	grid-gap: 5px;
-	justify-content: center;
-}
-.item{
-	border-radius: 5px;
-	padding: 10px;
-	background: #f2f2f2;
-} 
-.item img{
-	width:250px;
-	height:250px;
-	max-width: 100%;
-}
-</style>
-
 {<body}
-	<div class='container'>
+<main>
+    <section class="leading">
+        <p class="leading-bigtext">Compr</p>
+        <p class="leading-text">Amazon en la actualidad está totalmente diversificada en diferentes líneas de productos, ofreciendo DVD, CD de música, software, videojuegos, electrónica, ropa, muebles, comida, libros, etc. Es la marca de venta al por menor más valiosa del mundo</p>
+    </section>
+	<section class='cards'>
+		precio: {gitf}
 		{#json}
-			<div class='item'>
-				<p><b>{titulo}</b></p>
-				<img src='{@ima x="{des}" /}'>
-				<p>{descripcion} <b>{precio}</b></p>
-				<div align="center">
-					<button onclick="window.location.href='{des}'">Continue</button>
-				</div>
-				
-			</div>
+			<article align='center'>
+				<img class="article-img" src='{@ima x="{des}" /}' alt=' ' />				
+				<h1 class="article-title">{titulo}</h1>{precio}
+			</article>
 		{/json}
-	</div>
+	</section>
+</main>
 {/body}

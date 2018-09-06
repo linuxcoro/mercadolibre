@@ -32,6 +32,7 @@
     "pg": "*",
     "request": "*",
     "safe-buffer": "*",
-    "amazon-list-scraper": "^0.1.2"
+    "amazon-list-scraper": "^0.1.2",
+    "node-fetch": "^2.2.0"
   }
 }

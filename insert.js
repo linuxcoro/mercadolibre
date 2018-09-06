@@ -2,7 +2,6 @@
 var cheerio = require('cheerio')
 var request = require('request')
 var url='https://linuxcoro.herokuapp.com/json'
-//var url='http://localhost:8080/json'
 var cryptojs = require("crypto-js")
 /* insertar valores */
 var MongoClient = require('mongodb').MongoClient;
@@ -40,15 +39,6 @@ request(url, function(error, r, html){
     }
 })
 
-/* buscar */
-/* 
-function obtener(valor){
-    for(var i = 0; i < json.length; i++){
-      if(json[i].value == valor)
-        return json[i].label;
-    }
-}
- */
 function insertardb(myobj){
     MongoClient.connect(con,{ useNewUrlParser: true }, function(err, db) {
         var dbo = db.db("linuxcoro");

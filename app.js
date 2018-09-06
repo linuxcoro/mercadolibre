@@ -7,7 +7,8 @@ var path = require('path'),
     cryptojs = require("crypto-js"),
     express = require('express'),
     cheerio = require('cheerio'),
-    AmazonListScraper = require('amazon-list-scraper').default;
+    AmazonListScraper = require('amazon-list-scraper').default,
+    fetch = require('node-fetch');
     
 var app = express();
     app.engine('dust', cons.dust);
@@ -16,8 +17,11 @@ var app = express();
     app.use(express.static(path.join(__dirname,'public')));
 
 
+function fetchJSON(url) {
+    return fetch(url).then(response => response.json());
+}
+
 app.get('/json', function(req, res) {
-    //url = 'https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/';
 
     const scraper = new AmazonListScraper();
     scraper.scrape('https://www.amazon.com/registry/wishlist/1A7GB9IL1UAK2/')
@@ -29,67 +33,46 @@ app.get('/json', function(req, res) {
       });    
 
 
-/*     
-    request(url, function(error, response, html){
-        if(!error){
-            var $ = cheerio.load(html);
-            var img = [];
-            var tit = [];
-            var mystr = [];
-            var pre = [];
-            var todo = [];
-            var dif = 0;
-
-            $('.a-fixed-left-grid .a-spacing-none').find('.a-size-base a').each(function(i, elem) {
-                var t = $(this).text();  
-                var detalle = 'https://www.amazon.com'+$(this).attr('href');
-                mystr[i] = cryptojs.SHA256(detalle).toString();
-                tit[i] = {t,detalle};
-            });
-
-            $('.a-fixed-left-grid .a-spacing-none').find('span .a-offscreen').each(function(i, elem) {
-                pre[i] = $(this).text();
-            });
-
-            $('.a-fixed-left-grid .a-spacing-none').find('.g-itemImage img').each(function(i, elem) {
-                img[i] = $(this).attr("src");
-            });
-
-            // en caso que exista diferencias
-            if (tit.length != pre.length && tit.length != pre.length) {
-                dif = 1;
-            };
-        }
-
-        for (var i = pre.length - 1; i >= 0; i--) {
-            var hash = mystr[i]
-            var titulo=tit[i]
-            var precio=pre[i]
-            var imagen=img[i]
-
-            var kurs = {hash , titulo , precio , imagen}
-            todo[i] = kurs
-        };
-        res.json({ 'lista': todo });
-    })
-
- */    
 });
 
 app.get('/', function(req, res){
-    var url2 = 'https://api.mlab.com/api/1/databases/linuxcoro/collections/articles?q={"status":"1"}&apiKey=DSgbEQwpXRchIpWtCLjgEH-h83rECC4i'
-    request(url2, function(error, r, html){
-        const arr = JSON.parse(html)
-        res.render('index', {'json': arr});
-    })
+/* 
+    se tomara las api para calcular el precio en bolivare de los articulos
+    https://localbitcoins.com/sell-bitcoins-online/amazon-gift-card-code/.json
+    https://localbitcoins.com/buy-bitcoins-online/amazon-gift-card-code/.json    
+ */
+    let urls = [
+        'https://localbitcoins.com/sell-bitcoins-online/amazon-gift-card-code/.json',
+        'https://api.mlab.com/api/1/databases/linuxcoro/collections/articles?q={"status":"1"}&apiKey=DSgbEQwpXRchIpWtCLjgEH-h83rECC4i'
+    ];
+      
+    let promises = urls.map(url => fetchJSON(url));      
+    Promise.all(promises)
+        .then((responses) => {
+            var ruta1 = responses[0].data.ad_list
+            var todo1=[]
+            for (var i in ruta1)
+                todo1[i] = Number(ruta1[i].data.temp_price)
 
-	dust.helpers.ima = function (chunk, context, bodies, params) {
-	    var x = dust.helpers.tap(params.x, chunk, context),
-        xx = 'https://linuxcoro.herokuapp.com/img/'+x.split('/')[4]+'.jpg';
-	    return xx;
-	};
+            var result = todo1[0];
+            todo1.forEach(function(x) {
+                if (parseFloat(x) < result) result = x; // find smallest number as string instead
+            });
+            var s= responses[0].url
 
 
+            var ruta2 = responses[1]
+//            res.render('index', {'json': ruta2 , 'gift': typeof(result)});
+            res.render('index', {'json': ruta2 , 'gitf': result })
+
+            dust.helpers.ima = function (chunk, context, bodies, params) {
+                var x = dust.helpers.tap(params.x, chunk, context),
+                xx = 'https://linuxcoro.herokuapp.com/img/'+x.split('/')[4]+'.jpg';
+                return xx;
+            };
+        
+
+        });
 });
 
 
