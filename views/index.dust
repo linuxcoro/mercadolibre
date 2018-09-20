@@ -6,11 +6,11 @@
         <p class="leading-text">Amazon en la actualidad está totalmente diversificada en diferentes líneas de productos, ofreciendo DVD, CD de música, software, videojuegos, electrónica, ropa, muebles, comida, libros, etc. Es la marca de venta al por menor más valiosa del mundo</p>
     </section>
 	<section class='cards'>
-		precio: {gitf}
 		{#json}
 			<article align='center'>
 				<img class="article-img" src='{@ima x="{des}" /}' alt=' ' />				
-				<h1 class="article-title">{titulo}</h1>{precio}
+				<h1 class="article-title">{titulo}</h1>
+				Dolar: {precio} BS. {@sum x="{precio}" y="{gitf}" /}
 			</article>
 		{/json}
 	</section>
