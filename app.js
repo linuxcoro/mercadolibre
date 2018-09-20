@@ -1,11 +1,11 @@
-var path = require('path'),
+const path = require('path'),
     cons = require('consolidate'),
     dust = require('dustjs-helpers'),
     express = require('express'),
     AmazonListScraper = require('amazon-list-scraper').default,
     fetch = require('node-fetch')
     
-var app = express()
+const app = express()
     app.engine('dust', cons.dust)
     app.set('view engine', 'dust')
     app.set('views', __dirname + '/views')

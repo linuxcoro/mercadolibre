@@ -10,7 +10,7 @@
 			<article align='center'>
 				<img class="article-img" src='{@ima x="{des}" /}' alt=' ' />				
 				<h1 class="article-title">{titulo}</h1>
-				Dolar: {precio} BS. {@sum x="{precio}" y="{gitf}" /}
+				{precio} USD. {@sum x="{precio}" y="{gitf}" /} VES.
 			</article>
 		{/json}
 	</section>
